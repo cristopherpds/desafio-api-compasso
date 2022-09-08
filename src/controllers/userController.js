@@ -17,10 +17,10 @@ class UserController {
   }
 
   static listUserByName = (req, res) => {
-    const {name} = req.query;
+    const name = req.query.name;
 
     users.find({ 'name': { $regex: name } }, {}, (err, users) => {
-      if (usuarios.length == 0 || err) {
+      if (err) {
         res.status(404).send({ message: "Usuario nao encontrado." });
       } else {
         res.status(200).send(users);
@@ -39,7 +39,7 @@ class UserController {
       } else {
         res.status(201).send(user.toJSON());
       }
-    });
+    })
   }
 
   static updateUser = (req, res) => {
