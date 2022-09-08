@@ -2,18 +2,18 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {
-    name: {type: String},
-    cpf:{type: String},
-    birthDate: {type: String},
-    email: {type: String},
-    password: {type: String},
-    address: {type: String},
-    number: {type: String},
-    complement: {type: String},
-    city:{type: String},
-    state: {type: String},
-    country: {type: String},
-    zipCode: {type: String},
+    name: {type: String, required:true},
+    cpf:{type: String, required: true},
+    birthDate: {type: Date, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    address: {type: String, required: true},
+    number: {type: String, required: true},
+    complement: {type: String, required: true},
+    city:{type: String, required: true},
+    state: {type: String, required: true},
+    country: {type: String, required: true},
+    zipCode: {type: String, required: true},
   }
 );
 
