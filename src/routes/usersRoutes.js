@@ -5,6 +5,8 @@ const router = express.Router();
 
 router
   .get('/api/v1/user', UserController.listUsers)
-  .post('/api/v1/user', UserController.createUser);
+  .post('/api/v1/user', UserController.createUser)
+  .put('/api/v1/user/:id', UserController.updateUser)
+  .delete('/api/v1/user/:id', UserController.deleteUser)
 
 export default router;
