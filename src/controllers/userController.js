@@ -8,6 +8,13 @@ class UserController{
     }).select("-password");
   }
 
+  static listUserById = (req, res) =>{
+    const {id} = req.params;
+
+    users.findById(id,(err, users)=>{
+      !err ? res.status(200).send(users) : res.status(404).send({message:`${err.message} - id nao encontrado!`})
+    });
+  }
 
 
   static createUser = (req, res) =>{
