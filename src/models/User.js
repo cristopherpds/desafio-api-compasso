@@ -2,18 +2,22 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {
-    name: {type: String, required:true},
-    cpf:{type: String, required: true},
-    birthDate: {type: Date, required: true},
-    email: {type: String, required: true},
-    password: {type: String, required: true},
-    address: {type: String, required: true},
-    number: {type: String, required: true},
-    complement: {type: String, required: true},
-    city:{type: String, required: true},
-    state: {type: String, required: true},
-    country: {type: String, required: true},
-    zipCode: {type: String, required: true},
+    name:
+    {
+      type: String,
+      required: [true, 'O nome é obrigatorio']
+    },
+    cpf: { type: String, required: [true, 'O CPF é obrigatorio'],minlength: 11, maxlength: 11, validate: /^[0-9]*$/ },
+    birthDate: { type: Date, required: [true, 'A data de nascimento é obrigatoria'], max: "09/09/2004" },
+    email: { type: String, required: [true, 'O e-mail é obrigatorio'],match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'e-mail nao valido'] },
+    password: { type: String, required: [true, 'A senha é obrigatorio'], minlength: 6 },
+    address: { type: String, required: [true, 'O endereco é obrigatorio'] },
+    number: { type: String, required: [true, 'O numero da porta e obrigatorio'] },
+    complement: { type: String, required: [true, 'O complemento é obrigatorio'] },
+    city: { type: String, required: [true, 'A cidade é obrigatorio'] },
+    state: { type: String, required: [true, 'O estado é obrigatorio'] },
+    country: { type: String, required: [true, 'O país é obrigatorio'] },
+    zipCode: { type: String, required: [true, 'O CEP é obrigatorio'],validate: [/^[0-9]*$/, 'Prencher so com numeros'], minlength: 8, maxlength: 8 },
   }
 );
 
