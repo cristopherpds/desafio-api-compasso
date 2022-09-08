@@ -33,7 +33,6 @@ class UserController {
   static createUser = (req, res) => {
     let user = new users(req.body);
     user.save((err) => {
-      console.log(err);
       if (err) {
         res.status(500).send({ message: `${err.message} - falha ao registrar usuario` })
       } else {
